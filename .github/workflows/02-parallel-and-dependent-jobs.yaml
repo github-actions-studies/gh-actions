@@ -1,5 +1,6 @@
-name: 02 - Parallel and Dependent Jobs
-on: [push]
+name: 02 - Parallel and Dependant Jobs
+# on: [push]
+on: [workflow_dispatch]
 
 jobs:
   run-shell-commands:
