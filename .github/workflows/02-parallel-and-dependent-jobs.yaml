@@ -1,0 +1,29 @@
+name: 02 - Parallel and Dependent Jobs
+on: [push]
+
+jobs:
+  run-shell-commands:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Step 1 <> Echo a string
+        run: echo "Merhaba Dünya"
+      - name: Step 2 <> Multiline Command
+        run: |
+          node -v
+          npm -v
+
+  parallel-job-macros:
+    runs-on: macos-latest
+    steps:
+      - name: Step 1 <> View SW Version
+        run: sw_vers
+
+  dependant-job:
+    runs-on: windows-latest
+    needs: run-shell-commands
+    steps:
+      - name: Step 1 <> Echo a string
+        run: Write-Output "Windows String"
+
+      - name: Step 2 <> Error Step
+        run: doesnotexits
